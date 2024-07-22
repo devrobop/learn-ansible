@@ -1,0 +1,6 @@
+- name: Facts
+  hosts: loacalhost
+  tasks: 
+    - name: Print fact 
+      ansible.builtin.debug
+        msg: "{{ ansible_hostname }}"

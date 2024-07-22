@@ -1,0 +1,63 @@
+- name: Demo on Variables
+  hosts: all
+  vars: 
+    URl: vars.example.com
+  tasks: 
+    - name: Print URL 
+      ansible.builtin.debug:
+        msg: "URL = {{ URL }}" ;"URL1 = {{ URL1 }}"
+        # same like shell we can access varaiable with prefix $ , here variable will be under {{ }}
+        # when using variable using double quotes 
+        # if the value starts with variable then it requires quotes and we can use any single or double quotes 
+        # unlike shell , here in ansible single or double quotes does not have any difference
+        
+  roles:
+    - sample      
+
+# variables precedence(order)
+
+# 1. CLI -e variable
+# 2. tasks
+# 3. roles vars
+# 4. vars_files
+# 5. vars
+# n. roles defaults
+
+
+# variable types
+
+# 1. simple variable
+# 2. list
+# 3. Dictionary /map
+
+- name: Variable type demo 
+  hosts: localhost
+  vars:
+     CLASS: devops # this is a plain variable
+     timings: 
+      - 6am
+      - 7am
+      trainers: # dictionary / map
+      6am: John
+      7am: Peter
+  tasks:
+  - name: Print
+    ansible.builtin.debug:
+      msg: "{{ CLASS }} - {{ timings[0] }}"
+
+
+- name: variable Data types
+  hosts: local host
+  vars: 
+    number1: 10
+    number2: 11.1
+    string1: abc 
+    string2: xyz123
+    boolean1: yes
+    boolean2: no
+    boolean3: true
+    boolean4: false
+  tasks:
+    - name: Print
+      ansible.builtin.debug:
+        msg: ""
