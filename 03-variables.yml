@@ -61,3 +61,15 @@
     - name: Print
       ansible.builtin.debug:
         msg: ""
+
+
+# 
+- name: Retrive the output from previous command and store in variable
+  hosts: local host 
+  tasks: 
+     - ansible.builtin.shell: uptime
+       register: out
+
+     - ansible.builtin.debug:
+        msg: "{{ out }}"
+                  
