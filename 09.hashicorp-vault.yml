@@ -1,5 +1,5 @@
 - name: retrive secrets
   hosts: localhost
-  task:
+  tasks:
     - debug:
         msg: "{{ lookup('hashi_vault', 'secret=test/MYPASS  token={{ var.vault_token }} url=https://vault-internal-devrobo.online:8200 validate_certs=False')}}"
